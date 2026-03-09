@@ -62,7 +62,7 @@ export default function Home() {
         }}
       >
         {/* Subtext - starts at bottom of first viewport */}
-        <div className="flex h-screen shrink-0 flex-col justify-end px-8">
+        <div className="flex h-dvh shrink-0 flex-col justify-end px-8">
           <p
             ref={subtextRef}
             className="pb-6 text-center text-[24px] leading-tight text-black/90"
@@ -76,24 +76,15 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Image */}
-        <div className="relative min-h-[100vh] overflow-hidden">
-          <Image
-            src="/hero-image.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="animate-hero-image-zoom object-cover object-bottom sm:hidden"
-            priority
-          />
-          <Image
-            src="/hero-image.png"
-            alt=""
-            fill
-            sizes="100vw"
-            priority
-            className="animate-hero-image-zoom object-cover object-bottom hidden sm:block"
-          />
+        {/* Image - scaled by height and cropped horizontally */}
+        <div className="hero-image relative h-dvh w-full shrink-0 overflow-hidden">
+          <div className="absolute left-1/2 top-1/2 h-full -translate-x-1/2 -translate-y-1/2">
+            <img
+              src="/hero-image.jpg"
+              alt=""
+              className="block h-[80%] w-auto max-w-none animate-hero-image-zoom"
+            />
+          </div>
         </div>
       </div>
     </div>
