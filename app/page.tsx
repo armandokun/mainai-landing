@@ -271,6 +271,91 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer
+        className="px-6 pb-8 pt-16 sm:px-8"
+        style={{ backgroundColor: DARK_BG }}
+      >
+        <div className="mx-auto max-w-[745px]">
+          <Image
+            src="/logo/logo-white.svg"
+            alt="Mainai"
+            width={2500}
+            height={740}
+            className="h-auto w-full"
+          />
+        </div>
+
+        <div className="mx-auto mt-10 flex max-w-[745px] items-end justify-between gap-8">
+          {/* Left: contact info */}
+          <div
+            className="text-[15px] leading-[1.4] sm:text-[17px]"
+            style={{
+              fontFamily: "var(--font-solar)",
+              color: CREAM_WHITE,
+            }}
+          >
+            <p>
+              Tel. nr.:
+              <br />
+              <a
+                href="tel:+37069131019"
+                className="underline underline-offset-2"
+              >
+                +37069131019
+              </a>
+            </p>
+            <p className="mt-3">
+              Savanorių pr. 178B, Vilnius,
+              <br />
+              03154 Vilniaus m. sav.
+            </p>
+          </div>
+
+          {/* Right: social + privacy */}
+          <div className="flex flex-col items-end gap-4">
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/mainai.social/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Image
+                  src="/icon-instagram.svg"
+                  alt=""
+                  width={22}
+                  height={22}
+                />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61586391449827"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <Image
+                  src="/icon-facebook.svg"
+                  alt=""
+                  width={22}
+                  height={22}
+                />
+              </a>
+            </div>
+            <a
+              href="/privatumo-politika"
+              className="text-[15px] sm:text-[17px]"
+              style={{
+                fontFamily: "var(--font-solar)",
+                color: CREAM_WHITE,
+              }}
+            >
+              Privatumo politika
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
