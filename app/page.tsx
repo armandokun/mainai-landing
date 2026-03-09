@@ -14,14 +14,18 @@ export default function Home() {
   const [envelopeStep, setEnvelopeStep] = useState(0);
 
   useEffect(() => {
-    const header = headerRef.current;
-    const subtext = subtextRef.current;
-    if (!header || !subtext) return;
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-    const headerHeight = header.getBoundingClientRect().height;
-    const subtextTop = subtext.getBoundingClientRect().top;
-    const gap = subtextTop - headerHeight - 60;
-    setSlideDistance(gap);
+    if (!isDesktop) {
+      const header = headerRef.current;
+      const subtext = subtextRef.current;
+      if (!header || !subtext) return;
+
+      const headerHeight = header.getBoundingClientRect().height;
+      const subtextTop = subtext.getBoundingClientRect().top;
+      const gap = subtextTop - headerHeight - 60;
+      setSlideDistance(gap);
+    }
 
     const timer = setTimeout(() => setAnimate(true), 300);
     return () => clearTimeout(timer);
@@ -42,42 +46,26 @@ export default function Home() {
         className="relative h-dvh overflow-hidden"
         style={{ backgroundColor: CREAM_WHITE }}
       >
-        {/* Title */}
-        <header
-          ref={headerRef}
-          className="absolute left-0 right-0 top-0 z-10 px-6 sm:px-8"
-          style={{
-            backgroundColor: CREAM_WHITE,
-            paddingTop: "max(1.5rem, env(safe-area-inset-top))",
-          }}
-        >
-          <Image
-            src="/logo/logo-black.svg"
-            alt="Mainai"
-            width={2500}
-            height={740}
-            priority
-            className="mx-auto h-auto w-full max-w-[745px]"
-          />
-        </header>
-
-        {/* Sliding wrapper - transition-driven */}
-        <div
-          className="flex flex-col"
-          style={{
-            height: `200vh`,
-            willChange: "transform",
-            transition: "transform 1s cubic-bezier(0.62, 0.01, 0.03, 1)",
-            transform: animate
-              ? `translateY(-${slideDistance}px)`
-              : "translateY(0)",
-          }}
-        >
-          {/* Subtext - starts at bottom of first viewport */}
-          <div className="flex h-dvh shrink-0 flex-col justify-end px-8">
+        {/* === DESKTOP HERO (lg+) === */}
+        <div className="hidden h-full md:block">
+          {/* Left panel: title + subtitle */}
+          <div
+            className="relative z-10 flex h-full w-1/2 flex-col justify-between px-12 pb-12 pt-10"
+            style={{
+              transition: "transform 1s cubic-bezier(0.62, 0.01, 0.03, 1)",
+              transform: animate ? "translateX(0)" : "translateX(50%)",
+            }}
+          >
+            <Image
+              src="/logo/logo-black.svg"
+              alt="Mainai"
+              width={2500}
+              height={740}
+              priority
+              className="h-auto w-full"
+            />
             <p
-              ref={subtextRef}
-              className="pb-6 text-center text-[24px] leading-tight text-black/90"
+              className="text-center text-[28px] leading-tight text-black/90"
               style={{ fontFamily: "var(--font-solar)" }}
             >
               Kur svetimi tampa
@@ -88,26 +76,91 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Image - scaled by height and cropped horizontally */}
-          <div className="hero-image relative h-dvh w-full shrink-0 overflow-hidden">
-            <div className="absolute left-1/2 top-1/2 h-full -translate-x-1/2 -translate-y-1/2">
-              <img
-                src="/hero-image.jpg"
-                alt=""
-                className="block h-[80%] w-auto max-w-none animate-hero-image-zoom"
-              />
+          {/* Right panel: photo slides in from right */}
+          <div
+            className="absolute bottom-0 right-0 top-0 w-1/2 overflow-hidden"
+            style={{
+              transition: "transform 1s cubic-bezier(0.62, 0.01, 0.03, 1)",
+              transform: animate ? "translateX(0)" : "translateX(100%)",
+            }}
+          >
+            <img
+              src="/hero-image.jpg"
+              alt=""
+              className="h-full w-full object-cover animate-hero-image-zoom"
+            />
+          </div>
+        </div>
+
+        {/* === MOBILE HERO (< lg) === */}
+        <div className="relative md:hidden">
+          {/* Title */}
+          <header
+            ref={headerRef}
+            className="absolute left-0 right-0 top-0 z-10 px-6 sm:px-8"
+            style={{
+              backgroundColor: CREAM_WHITE,
+              paddingTop: "max(1.5rem, env(safe-area-inset-top))",
+            }}
+          >
+            <Image
+              src="/logo/logo-black.svg"
+              alt="Mainai"
+              width={2500}
+              height={740}
+              priority
+              className="mx-auto h-auto w-full max-w-[745px]"
+            />
+          </header>
+
+          {/* Sliding wrapper - transition-driven */}
+          <div
+            className="flex flex-col"
+            style={{
+              height: `200vh`,
+              willChange: "transform",
+              transition: "transform 1s cubic-bezier(0.62, 0.01, 0.03, 1)",
+              transform: animate
+                ? `translateY(-${slideDistance}px)`
+                : "translateY(0)",
+            }}
+          >
+            {/* Subtext - starts at bottom of first viewport */}
+            <div className="flex h-dvh shrink-0 flex-col justify-end px-8">
+              <p
+                ref={subtextRef}
+                className="pb-6 text-center text-[24px] leading-tight text-black/90"
+                style={{ fontFamily: "var(--font-solar)" }}
+              >
+                Kur svetimi tampa
+                <br />
+                pažįstamais, o paprasti
+                <br />
+                dalykai sujungia.
+              </p>
+            </div>
+
+            {/* Image - scaled by height and cropped horizontally */}
+            <div className="hero-image relative h-dvh w-full shrink-0 overflow-hidden">
+              <div className="absolute left-1/2 top-1/2 h-full -translate-x-1/2 -translate-y-1/2">
+                <img
+                  src="/hero-image.jpg"
+                  alt=""
+                  className="block h-[80%] w-auto max-w-none animate-hero-image-zoom"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section
-        className="flex min-h-[80dvh] items-center justify-center px-4"
+        className="flex min-h-[80dvh] items-center justify-center px-4 md:min-h-dvh"
         style={{ backgroundColor: DARK_BG }}
       >
-        <div className="relative flex w-[341px] max-w-full items-center justify-center">
+        <div className="relative flex w-[341px] max-w-full items-center justify-center md:w-[460px] md:min-h-[583px]">
           {/* Step 0: Open envelope + form */}
-          <div className="w-full">
+          <div className="w-full md:origin-center md:scale-[1.35]">
             <div
               className="relative h-[432px] w-full"
               style={{
@@ -274,28 +327,104 @@ export default function Home() {
 
       {/* Footer */}
       <footer
-        className="px-6 pb-[52px] pt-16 sm:px-8"
+        className="px-6 pb-[52px] pt-16 sm:px-8 md:pb-10 md:pt-0"
         style={{ backgroundColor: DARK_BG }}
       >
-        <div className="mx-auto max-w-[745px]">
-          <Image
-            src="/logo/logo-white.svg"
-            alt="Mainai"
-            width={2500}
-            height={740}
-            className="h-auto w-full"
-          />
+        {/* Mobile footer */}
+        <div className="md:hidden">
+          <div className="mx-auto max-w-[745px]">
+            <Image
+              src="/logo/logo-white.svg"
+              alt="Mainai"
+              width={2500}
+              height={740}
+              className="h-auto w-full"
+            />
+          </div>
+
+          <div className="mx-auto mt-10 flex max-w-[745px] items-end justify-between gap-8">
+            <div
+              className="text-[15px] leading-[1.4] sm:text-[17px]"
+              style={{
+                fontFamily: "var(--font-solar)",
+                color: CREAM_WHITE,
+              }}
+            >
+              <p>
+                Tel. nr.:
+                <br />
+                <a
+                  href="tel:+37069131019"
+                  className="underline underline-offset-2"
+                >
+                  +37069131019
+                </a>
+              </p>
+              <p className="mt-3">
+                Savanorių pr. 178B, Vilnius,
+                <br />
+                03154 Vilniaus m. sav.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-end gap-4">
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.instagram.com/mainai.social/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <Image
+                    src="/icon-instagram.svg"
+                    alt=""
+                    width={22}
+                    height={22}
+                  />
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61586391449827"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <Image
+                    src="/icon-facebook.svg"
+                    alt=""
+                    width={22}
+                    height={22}
+                  />
+                </a>
+              </div>
+              <a
+                href="/privatumo-politika"
+                className="text-[15px] sm:text-[17px]"
+                style={{
+                  fontFamily: "var(--font-solar)",
+                  color: CREAM_WHITE,
+                }}
+              >
+                Privatumo politika
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className="mx-auto mt-10 flex max-w-[745px] items-end justify-between gap-8">
+        {/* Desktop/tablet footer */}
+        <div className="relative hidden items-center justify-between md:flex">
           {/* Left: contact info */}
           <div
-            className="text-[15px] leading-[1.4] sm:text-[17px]"
+            className="flex gap-8 text-[14px] leading-[1.4]"
             style={{
               fontFamily: "var(--font-solar)",
               color: CREAM_WHITE,
             }}
           >
+            <p>
+              Savanorių pr. 178B, Vilnius,
+              <br />
+              03154 Vilniaus m. sav.
+            </p>
             <p>
               Tel. nr.:
               <br />
@@ -306,15 +435,31 @@ export default function Home() {
                 +37069131019
               </a>
             </p>
-            <p className="mt-3">
-              Savanorių pr. 178B, Vilnius,
-              <br />
-              03154 Vilniaus m. sav.
-            </p>
           </div>
 
-          {/* Right: social + privacy */}
-          <div className="flex flex-col items-end gap-4">
+          {/* Center: logo */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <Image
+              src="/logo/logo-white.svg"
+              alt="Mainai"
+              width={2500}
+              height={740}
+              className="h-auto w-[154px]"
+            />
+          </div>
+
+          {/* Right: privacy + socials */}
+          <div className="flex items-center gap-6">
+            <a
+              href="/privatumo-politika"
+              className="text-[14px]"
+              style={{
+                fontFamily: "var(--font-solar)",
+                color: CREAM_WHITE,
+              }}
+            >
+              Privatumo politika
+            </a>
             <div className="flex items-center gap-3">
               <a
                 href="https://www.instagram.com/mainai.social/"
@@ -338,16 +483,6 @@ export default function Home() {
                 <Image src="/icon-facebook.svg" alt="" width={22} height={22} />
               </a>
             </div>
-            <a
-              href="/privatumo-politika"
-              className="text-[15px] sm:text-[17px]"
-              style={{
-                fontFamily: "var(--font-solar)",
-                color: CREAM_WHITE,
-              }}
-            >
-              Privatumo politika
-            </a>
           </div>
         </div>
       </footer>
