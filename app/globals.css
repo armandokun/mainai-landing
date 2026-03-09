@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Marlfield";
+  src: url("/fonts/Marlfield-BoldCondensed.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Solar Display";
+  src: url("/fonts/ABCSolarDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-solar: "Solar Display", serif;
+  --font-marlfield: "Marlfield", serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-marlfield: "Marlfield", serif;
+  --font-solar: "Solar Display", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes heroSlide {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-65vh);
+  }
+}
+
+@keyframes heroImageZoom {
+  from {
+    transform: scale(1.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-hero-slide {
+  will-change: transform;
+  animation: heroSlide 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards;
+}
+
+.animate-hero-image-zoom {
+  transform: scale(1.3);
+  will-change: transform;
+  animation: heroImageZoom 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards;
+}
+
