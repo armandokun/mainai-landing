@@ -32,9 +32,9 @@ export default function Home() {
     if (envelopeStep !== 0) return;
 
     setEnvelopeStep(1);
+    setTimeout(() => setEnvelopeStep(2), 420);
     // TODO: uncomment when ready for full sequence
-    // setTimeout(() => setEnvelopeStep(2), 401);
-    // setTimeout(() => setEnvelopeStep(3), 802);
+    // setTimeout(() => setEnvelopeStep(3), 820);
   };
 
   return (
@@ -109,18 +109,20 @@ export default function Home() {
         <div className="relative flex w-[341px] max-w-full items-center justify-center">
           {/* Step 0: Open envelope + form */}
           <div className="w-full">
-            <div className="relative h-[432px] w-full overflow-hidden">
+            <div
+              className="relative h-[432px] w-full"
+              style={{ perspective: "800px" }}
+            >
               {/* Back layer: envelope back + paper */}
               <svg
                 viewBox="0 0 649 830"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="absolute inset-0 z-0 h-full w-full"
+                preserveAspectRatio="none"
               >
-                <path
-                  d="M648.985 273.398V529.95H0.000244141V273.398C0.000244141 260.973 5.57229 249.203 15.1826 241.328L298.212 9.39275C313.495 -3.13092 335.491 -3.13092 350.774 9.39275L633.803 241.328C643.414 249.203 648.985 260.973 648.985 273.398Z"
-                  fill="#DC321E"
-                />
+                {/* Red fill behind the flap area */}
+                <rect x="0" y="268" width="649" height="562" fill="#DC321E" />
                 <g
                   style={{
                     transition: "transform 400ms ease-in-out",
@@ -134,6 +136,34 @@ export default function Home() {
                   />
                 </g>
               </svg>
+
+              {/* Flap layer: triangle that folds closed with 3D rotation */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "-11.5px",
+                  left: 0,
+                  right: 0,
+                  zIndex: envelopeStep >= 2 ? 40 : -1,
+                  height: "35%",
+                  overflow: "hidden",
+                  transformOrigin: "center bottom",
+                  transition: "transform 400ms ease-in-out",
+                  transform:
+                    envelopeStep >= 2 ? "rotateX(180deg)" : "rotateX(0deg)",
+                }}
+              >
+                <svg
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-full w-full"
+                  preserveAspectRatio="none"
+                  overflow="hidden"
+                >
+                  <polygon points="50,0 100,100 0,100" fill="#DC321E" />
+                </svg>
+              </div>
 
               {/* Middle layer: text + form (slides down, goes behind front folds) */}
               <div
@@ -194,11 +224,9 @@ export default function Home() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="pointer-events-none absolute inset-0 z-20 h-full w-full"
+                preserveAspectRatio="none"
               >
-                <path
-                  d="M0.000249646 816.11L0.00025936 705L649 705L649 816.111C649 821.492 649 819.005 649 830L335.508 830C226.505 830 197.505 830 239.006 830L4.29168e-06 830C0.000144822 823.345 0.000249176 821.492 0.000249646 816.11Z"
-                  fill="#DC321E"
-                />
+                <rect x="0" y="700" width="649" height="130" fill="#DC321E" />
                 <path
                   d="M648.985 287.706V705.4H0.000244141V287.706L52.1298 305.82C59.7518 308.466 66.7288 312.691 72.5999 318.207L283.553 516.431H365.433L576.373 318.207C582.257 312.691 589.234 308.466 596.843 305.82L648.985 287.706Z"
                   fill="#DC321E"
