@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       <section
-        className="flex min-h-dvh items-center justify-center px-4 py-8"
+        className="flex min-h-[80dvh] items-center justify-center px-4"
         style={{ backgroundColor: DARK_BG }}
       >
         <div className="relative flex w-[341px] max-w-full items-center justify-center">
