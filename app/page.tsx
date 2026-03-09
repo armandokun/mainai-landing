@@ -33,8 +33,7 @@ export default function Home() {
 
     setEnvelopeStep(1);
     setTimeout(() => setEnvelopeStep(2), 420);
-    // TODO: uncomment when ready for full sequence
-    // setTimeout(() => setEnvelopeStep(3), 820);
+    setTimeout(() => setEnvelopeStep(3), 900);
   };
 
   return (
@@ -111,7 +110,12 @@ export default function Home() {
           <div className="w-full">
             <div
               className="relative h-[432px] w-full"
-              style={{ perspective: "800px" }}
+              style={{
+                perspective: "800px",
+                transition: "transform 400ms ease-in-out",
+                transform:
+                  envelopeStep >= 2 ? "translateY(-100px)" : "translateY(0)",
+              }}
             >
               {/* Back layer: envelope back + paper */}
               <svg
@@ -236,64 +240,35 @@ export default function Home() {
                   fill="#DC321E"
                 />
               </svg>
+              {/* Step 3: Success text */}
+              <div
+                className="absolute bottom-0 left-0 top-[140px] right-0 z-50 flex flex-col items-center justify-between"
+                style={{
+                  opacity: envelopeStep === 3 ? 1 : 0,
+                  pointerEvents: "none",
+                  transition: "opacity 600ms ease-in",
+                }}
+              >
+                <h2
+                  className="whitespace-nowrap text-center text-[65px] text-[#faf5f0]"
+                  style={{
+                    fontFamily: "var(--font-marlfield)",
+                    transform: "scaleY(1.3)",
+                  }}
+                >
+                  IKI GREITO!
+                </h2>
+                <p
+                  className="pb-[10px] text-center text-[22px] leading-[28px] text-[#faf5f0]"
+                  style={{ fontFamily: "var(--font-solar)" }}
+                >
+                  Registracija
+                  <br />
+                  sėkminga.
+                </p>
+              </div>
             </div>
           </div>
-
-          {/* Steps 1-3: commented out while focusing on paper slide animation
-          <div
-            className="absolute inset-0 flex items-center justify-center transition-opacity duration-400"
-            style={{
-              opacity: envelopeStep === 1 ? 1 : 0,
-              pointerEvents: "none",
-              transitionTimingFunction: "ease-out",
-            }}
-          >
-            <img
-              src="/envelope-closing.svg"
-              alt=""
-              className="h-auto w-full"
-            />
-          </div>
-
-          <div
-            className="absolute inset-0 flex items-center justify-center transition-opacity duration-400"
-            style={{
-              opacity: envelopeStep === 2 ? 1 : 0,
-              pointerEvents: "none",
-              transitionTimingFunction: "ease-in",
-            }}
-          >
-            <img
-              src="/envelope-closed.svg"
-              alt=""
-              className="h-auto w-full"
-            />
-          </div>
-
-          <div
-            className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-600"
-            style={{
-              opacity: envelopeStep === 3 ? 1 : 0,
-              pointerEvents: "none",
-              transitionTimingFunction: "ease-in",
-            }}
-          >
-            <h2
-              className="text-center text-[80px] leading-[0.9] tracking-[-0.02em] text-[#faf5f0]"
-              style={{ fontFamily: "var(--font-marlfield)" }}
-            >
-              IKI GREITO!
-            </h2>
-            <p
-              className="mt-6 text-center text-[22px] leading-[28px] text-[#faf5f0]"
-              style={{ fontFamily: "var(--font-solar)" }}
-            >
-              Registracija
-              <br />
-              sėkminga.
-            </p>
-          </div>
-          */}
         </div>
       </section>
     </div>
