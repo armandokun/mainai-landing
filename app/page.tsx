@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       <section
-        className="flex min-h-dvh items-center justify-center px-4 py-14"
+        className="flex min-h-dvh items-center justify-center px-4 py-8"
         style={{ backgroundColor: DARK_BG }}
       >
         <div className="relative flex w-[341px] max-w-full items-center justify-center">
@@ -274,7 +274,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer
-        className="px-6 pb-8 pt-16 sm:px-8"
+        className="px-6 pb-[52px] pt-16 sm:px-8"
         style={{ backgroundColor: DARK_BG }}
       >
         <div className="mx-auto max-w-[745px]">
@@ -335,12 +335,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 aria-label="Facebook"
               >
-                <Image
-                  src="/icon-facebook.svg"
-                  alt=""
-                  width={22}
-                  height={22}
-                />
+                <Image src="/icon-facebook.svg" alt="" width={22} height={22} />
               </a>
             </div>
             <a

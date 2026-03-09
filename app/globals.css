@@ -17,7 +17,7 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: #faf5f0;
   --foreground: #171717;
   --font-solar: "Solar Display", serif;
   --font-marlfield: "Marlfield", serif;
@@ -34,8 +34,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #faf5f0;
+    --foreground: #171717;
   }
 }
 
