@@ -13,7 +13,7 @@ export default function PrivatumoPage() {
   return (
     <div style={{ backgroundColor: DARK_BG, minHeight: "100dvh" }}>
       {/* Content */}
-      <main className="mx-auto max-w-[745px] px-6 pb-16 pt-12 sm:px-8 md:pb-24 md:pt-16 xl:max-w-[900px] xl:pb-32 xl:pt-20">
+      <main className="mx-auto max-w-[745px] px-6 pb-16 pt-12 sm:px-8 md:pb-40 md:pt-16 xl:max-w-[900px] xl:pb-56 xl:pt-20">
         {/* Logo */}
         <div className="mb-12 md:mb-16">
           <Image
