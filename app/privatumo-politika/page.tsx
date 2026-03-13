@@ -13,7 +13,7 @@ export default function PrivatumoPage() {
   return (
     <div style={{ backgroundColor: DARK_BG, minHeight: "100dvh" }}>
       {/* Content */}
-      <main className="mx-auto max-w-[745px] px-6 pb-2 pt-12 sm:px-8 md:pt-16">
+      <main className="mx-auto max-w-[745px] px-6 pb-16 pt-12 sm:px-8 md:pb-24 md:pt-16 xl:max-w-[900px] xl:pb-32 xl:pt-20">
         {/* Logo */}
         <div className="mb-12 md:mb-16">
           <Image
@@ -21,26 +21,32 @@ export default function PrivatumoPage() {
             alt="Mainai"
             width={2500}
             height={740}
-            className="h-auto w-full"
+            className="h-auto w-full md:mx-auto md:max-w-[420px]"
           />
         </div>
 
         {/* Policy text */}
         <div
-          className="space-y-3 text-[14px] leading-relaxed"
-          style={{ fontFamily: "var(--font-solar)", color: CREAM_WHITE }}
+          className="space-y-3 leading-relaxed [&_*]:font-medium md:space-y-10 md:leading-[1.8]"
+          style={{
+            fontFamily: "var(--font-solar)",
+            color: CREAM_WHITE,
+            fontSize: "clamp(14px, 0.5vw + 10px, 22px)",
+            fontWeight: 500,
+          }}
         >
           <h1
-            className="text-[27px] font-medium tracking-wide mb-5"
-            style={{ fontFamily: "var(--font-solar)" }}
+            className="font-medium tracking-wide mb-5"
+            style={{
+              fontSize: "clamp(27px, 3vw + 16px, 64px)",
+              fontFamily: "var(--font-solar)",
+            }}
           >
             Privatumo Politika
           </h1>
 
-          <section className="space-y-3">
-            <h2 className="text-[14px] font-medium">
-              1. BENDROSIOS NUOSTATOS
-            </h2>
+          <section className="space-y-3 md:space-y-1">
+            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>1. BENDROSIOS NUOSTATOS</h2>
             <p>
               Mums rūpi Jūsų privatumas ir asmens duomenų saugumas.
               Įgyvendindami 2016 m. balandžio 27 d. Europos Parlamento ir
@@ -59,18 +65,18 @@ export default function PrivatumoPage() {
               teisės aktais arba tai būtų būtina mūsų paslaugoms teikti.
             </p>
             <p>
-              Jūsų asmens duomenų valdytojas yra UAB &bdquo;Padelio daržas&rdquo;, įmonės
-              kodas 306978983, registruotas buveinės adresas Savanorių pr.
-              178B-104, LT-03154 Vilnius, Lietuva, kontaktinis telefono Nr.{" "}
-              <a href="tel:+37069131019">+37069131019</a>
-              , elektroninio pašto adresas:{" "}
-              <a href="mailto:labas@mainai.social">labas@mainai.social</a>
-              .
+              Jūsų asmens duomenų valdytojas yra UAB &bdquo;Padelio
+              daržas&rdquo;, įmonės kodas 306978983, registruotas buveinės
+              adresas Savanorių pr. 178B-104, LT-03154 Vilnius, Lietuva,
+              kontaktinis telefono Nr.{" "}
+              <a href="tel:+37069131019">+37069131019</a>, elektroninio pašto
+              adresas:{" "}
+              <a href="mailto:labas@mainai.social">labas@mainai.social</a>.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-[14px] font-medium">
+          <section className="space-y-3 md:space-y-1">
+            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
               2. KOKIAIS TIKSLAIS, KOKIUS ASMENS DUOMENIS IR KOKIU TEISINIU
               PAGRINDU TVARKOME
             </h2>
@@ -115,10 +121,8 @@ export default function PrivatumoPage() {
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-[14px] font-medium">
-              3. TVARKOMŲ ASMENS DUOMENŲ KILMĖ
-            </h2>
+          <section className="space-y-3 md:space-y-1">
+            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>3. TVARKOMŲ ASMENS DUOMENŲ KILMĖ</h2>
             <p>
               Mes tvarkome tuos asmens duomenis, kuriuos Jūs patys mums
               pateikiate naudodamiesi mūsų interneto svetaine (pildydami
@@ -127,10 +131,8 @@ export default function PrivatumoPage() {
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-[14px] font-medium">
-              4. KAM PERDUODAME ASMENS DUOMENIS
-            </h2>
+          <section className="space-y-3 md:space-y-1">
+            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>4. KAM PERDUODAME ASMENS DUOMENIS</h2>
             <p>
               Asmens duomenys yra perduodami tik patikimoms trečiosioms šalims,
               su kuriomis esame sudarę sutartis, ir tik tokia apimtimi, kuri yra
@@ -138,16 +140,17 @@ export default function PrivatumoPage() {
             </p>
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                Naujienlaiškių siuntimo platformai &bdquo;MailerLite&rdquo;, teikiančiai
-                tiesioginės rinkodaros administravimo paslaugas.
+                Naujienlaiškių siuntimo platformai &bdquo;MailerLite&rdquo;,
+                teikiančiai tiesioginės rinkodaros administravimo paslaugas.
               </li>
               <li>
                 Svetainės prieglobos (hostingo) ir IT sistemų priežiūros
                 paslaugų teikėjams.
               </li>
               <li>
-                Reklamos ir analitikos partneriams (pvz., &bdquo;Google&rdquo;, &bdquo;Meta&rdquo;), per
-                svetainėje naudojamus slapukus ir sekimo technologijas.
+                Reklamos ir analitikos partneriams (pvz., &bdquo;Google&rdquo;,
+                &bdquo;Meta&rdquo;), per svetainėje naudojamus slapukus ir
+                sekimo technologijas.
               </li>
               <li>
                 Valstybinėms institucijoms ir teisėsaugos įstaigoms, kai tokią
@@ -156,8 +159,8 @@ export default function PrivatumoPage() {
             </ul>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-[14px] font-medium">
+          <section className="space-y-3 md:space-y-1">
+            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
               5. KIEK LAIKO SAUGOMI ASMENS DUOMENYS
             </h2>
             <p>Jūsų asmens duomenis saugome:</p>
@@ -185,8 +188,8 @@ export default function PrivatumoPage() {
             </ul>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-[14px] font-medium">
+          <section className="space-y-3 md:space-y-1">
+            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
               6. KOKIAS TEISES JŪS TURITE IR KAIP GALITE JOMIS PASINAUDOTI
             </h2>
             <p>
@@ -194,15 +197,15 @@ export default function PrivatumoPage() {
               asmens duomenų tvarkymą; prašyti leisti susipažinti su asmens
               duomenimis; reikalauti ištaisyti netikslius duomenis; reikalauti
               apriboti duomenų tvarkymą; reikalauti ištrinti asmens duomenis
-              (&bdquo;teisė būti pamirštam&rdquo;); atšaukti duotą sutikimą; nesutikti su
-              duomenų tvarkymu; teisę į duomenų perkeliamumą.
+              (&bdquo;teisė būti pamirštam&rdquo;); atšaukti duotą sutikimą;
+              nesutikti su duomenų tvarkymu; teisę į duomenų perkeliamumą.
             </p>
             <p>
               Norėdami įgyvendinti paminėtas teises, galite kreiptis į UAB
-              &bdquo;Padelio daržas&rdquo; šioje politikoje nurodytais kontaktais. Tam, kad
-              galėtume tinkamai išnagrinėti Jūsų prašymą, prašytume kreiptis
-              pateikiant prašymą raštu ir nurodant, kokią teisę pageidaujate
-              įgyvendinti.
+              &bdquo;Padelio daržas&rdquo; šioje politikoje nurodytais
+              kontaktais. Tam, kad galėtume tinkamai išnagrinėti Jūsų prašymą,
+              prašytume kreiptis pateikiant prašymą raštu ir nurodant, kokią
+              teisę pageidaujate įgyvendinti.
             </p>
             <p>
               Ne vėliau kaip per 1 (vieną) mėnesį nuo prašymo gavimo dienos,
@@ -213,8 +216,8 @@ export default function PrivatumoPage() {
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-[14px] font-medium">
+          <section className="space-y-3 md:space-y-1">
+            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
               7. SLAPUKŲ (COOKIES) NAUDOJIMO POLITIKA
             </h2>
             <p>
@@ -222,8 +225,8 @@ export default function PrivatumoPage() {
               failai, saugomi Jūsų įrenginyje ir padedantys atpažinti Jus kaip
               lankytoją bei išsaugantys informaciją apie naršymą. Mes naudojame
               būtinuosius slapukus (užtikrinančius svetainės veikimą),
-              analitinius ir rinkodaros slapukus (&bdquo;Google Analytics&rdquo;, &bdquo;Meta
-              Pixel&rdquo;).
+              analitinius ir rinkodaros slapukus (&bdquo;Google
+              Analytics&rdquo;, &bdquo;Meta Pixel&rdquo;).
             </p>
             <p>
               Slapukus valdyti galite naudodamiesi mūsų interneto svetainėje
@@ -235,10 +238,8 @@ export default function PrivatumoPage() {
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-[14px] font-medium">
-              8. PRIVATUMO POLITIKOS PAKEITIMAI
-            </h2>
+          <section className="space-y-3 md:space-y-1">
+            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>8. PRIVATUMO POLITIKOS PAKEITIMAI</h2>
             <p>
               Šią Privatumo politiką galime pakeisti bet kuriuo metu savo
               nuožiūra. Atnaujinta Privatumo politika įsigalioja nuo jos

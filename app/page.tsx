@@ -160,7 +160,7 @@ export default function Home() {
       >
         <div className="relative flex w-[341px] max-w-full items-center justify-center md:w-[460px] md:min-h-[583px]">
           {/* Step 0: Open envelope + form */}
-          <div className="w-full md:origin-center md:scale-[1.35]">
+          <div className="w-full md:origin-center md:scale-[1.35] xl:scale-[2]">
             <div
               className="relative h-[432px] w-full"
               style={{
@@ -232,10 +232,10 @@ export default function Home() {
                 }}
               >
                 <p
-                  className="mx-auto mt-[10px] w-[75%] text-center text-[22px] leading-[24px] text-[#231f20]"
+                  className="mx-auto mt-[30px] w-[85%] text-center text-[23px] leading-[24px] text-[#231f20]"
                   style={{ fontFamily: "var(--font-solar)" }}
                 >
-                  Užsiregistruok ir būk ten, kur viskas prasidės.
+                  Užsiregistruok ir būk ten, <br /> kur viskas prasidės.
                 </p>
               </div>
 
@@ -266,13 +266,29 @@ export default function Home() {
                   style={{ fontFamily: "var(--font-solar)" }}
                 />
 
-                <button
-                  type="submit"
-                  className="mx-auto mt-[10px] flex h-[34px] w-[63px] cursor-pointer items-center justify-center rounded-[40.07px] border-[1.67px] border-[#faf5f0] bg-transparent text-[13.36px] leading-[17px] text-white transition-colors duration-200 hover:bg-[#faf5f0] hover:text-[#dc321e]"
-                  style={{ fontFamily: "var(--font-solar)" }}
-                >
-                  Siųsti
-                </button>
+                <div className="mt-[10px] flex w-full items-center gap-3">
+                  <p
+                    className="w-[60%] text-[7px] font-medium tracking-[0.05em] leading-[124%] text-white/90 md:w-[80%] md:text-[9px] lg:text-[9px]"
+                    style={{ fontFamily: "var(--font-solar)" }}
+                  >
+                    Pateikdami savo duomenis sutinkate gauti mūsų
+                    naujienlaiškius bei pasiūlymus ir patvirtinate, kad
+                    susipažinote su mūsų{" "}
+                    <a
+                      href="/privatumo-politika"
+                      className="underline underline-offset-2"
+                    >
+                      Privatumo politika.
+                    </a>
+                  </p>
+                  <button
+                    type="submit"
+                    className="ml-auto shrink-0 flex h-[34px] w-[63px] cursor-pointer items-center justify-center rounded-[40.07px] border-[1.67px] border-[#faf5f0] bg-transparent text-[13.36px] leading-[17px] text-white transition-colors duration-200 hover:bg-[#faf5f0] hover:text-[#dc321e]"
+                    style={{ fontFamily: "var(--font-solar)" }}
+                  >
+                    Siųsti
+                  </button>
+                </div>
               </form>
 
               {/* Front layer: envelope front folds (on top of text) */}
@@ -303,16 +319,16 @@ export default function Home() {
                 }}
               >
                 <h2
-                  className="whitespace-nowrap text-center text-[65px] text-[#faf5f0]"
+                  className="whitespace-nowrap pt-[10px] text-center text-[65px] text-[#faf5f0]"
                   style={{
                     fontFamily: "var(--font-marlfield)",
-                    transform: "scaleY(1.3)",
+                    transform: "scaleY(1.5)",
                   }}
                 >
                   IKI GREITO!
                 </h2>
                 <p
-                  className="pb-[10px] text-center text-[22px] leading-[28px] text-[#faf5f0]"
+                  className="pb-[10px] text-center text-[25px] leading-[26px] text-[#faf5f0]"
                   style={{ fontFamily: "var(--font-solar)" }}
                 >
                   Registracija
