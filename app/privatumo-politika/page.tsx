@@ -46,7 +46,7 @@ export default function PrivatumoPage() {
           </h1>
 
           <section className="space-y-3 md:space-y-1">
-            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>1. BENDROSIOS NUOSTATOS</h2>
+            <h2 className="font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>1. BENDROSIOS NUOSTATOS</h2>
             <p>
               Mums rūpi Jūsų privatumas ir asmens duomenų saugumas.
               Įgyvendindami 2016 m. balandžio 27 d. Europos Parlamento ir
@@ -76,7 +76,7 @@ export default function PrivatumoPage() {
           </section>
 
           <section className="space-y-3 md:space-y-1">
-            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
+            <h2 className="font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
               2. KOKIAIS TIKSLAIS, KOKIUS ASMENS DUOMENIS IR KOKIU TEISINIU
               PAGRINDU TVARKOME
             </h2>
@@ -122,7 +122,7 @@ export default function PrivatumoPage() {
           </section>
 
           <section className="space-y-3 md:space-y-1">
-            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>3. TVARKOMŲ ASMENS DUOMENŲ KILMĖ</h2>
+            <h2 className="font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>3. TVARKOMŲ ASMENS DUOMENŲ KILMĖ</h2>
             <p>
               Mes tvarkome tuos asmens duomenis, kuriuos Jūs patys mums
               pateikiate naudodamiesi mūsų interneto svetaine (pildydami
@@ -132,7 +132,7 @@ export default function PrivatumoPage() {
           </section>
 
           <section className="space-y-3 md:space-y-1">
-            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>4. KAM PERDUODAME ASMENS DUOMENIS</h2>
+            <h2 className="font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>4. KAM PERDUODAME ASMENS DUOMENIS</h2>
             <p>
               Asmens duomenys yra perduodami tik patikimoms trečiosioms šalims,
               su kuriomis esame sudarę sutartis, ir tik tokia apimtimi, kuri yra
@@ -160,7 +160,7 @@ export default function PrivatumoPage() {
           </section>
 
           <section className="space-y-3 md:space-y-1">
-            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
+            <h2 className="font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
               5. KIEK LAIKO SAUGOMI ASMENS DUOMENYS
             </h2>
             <p>Jūsų asmens duomenis saugome:</p>
@@ -189,7 +189,7 @@ export default function PrivatumoPage() {
           </section>
 
           <section className="space-y-3 md:space-y-1">
-            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
+            <h2 className="font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
               6. KOKIAS TEISES JŪS TURITE IR KAIP GALITE JOMIS PASINAUDOTI
             </h2>
             <p>
@@ -217,7 +217,7 @@ export default function PrivatumoPage() {
           </section>
 
           <section className="space-y-3 md:space-y-1">
-            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
+            <h2 className="font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>
               7. SLAPUKŲ (COOKIES) NAUDOJIMO POLITIKA
             </h2>
             <p>
@@ -239,7 +239,7 @@ export default function PrivatumoPage() {
           </section>
 
           <section className="space-y-3 md:space-y-1">
-            <h2 className="font-medium" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>8. PRIVATUMO POLITIKOS PAKEITIMAI</h2>
+            <h2 className="font-medium leading-tight" style={{ fontSize: "clamp(14px, 1.2vw + 14px, 36px)" }}>8. PRIVATUMO POLITIKOS PAKEITIMAI</h2>
             <p>
               Šią Privatumo politiką galime pakeisti bet kuriuo metu savo
               nuožiūra. Atnaujinta Privatumo politika įsigalioja nuo jos
