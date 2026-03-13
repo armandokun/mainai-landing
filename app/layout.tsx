@@ -78,7 +78,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Script src="/silktide-consent-manager.js" strategy="beforeInteractive" />
+        <Script src="/silktide-consent-manager.js" strategy="afterInteractive" />
         <Script src="/silktide-config.js" strategy="afterInteractive" />
       </body>
     </html>
