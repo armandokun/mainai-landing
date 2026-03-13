@@ -155,12 +155,12 @@ export default function Home() {
       </section>
 
       <section
-        className="flex min-h-[80dvh] items-center justify-center px-4 md:min-h-dvh"
+        className="flex min-h-[80dvh] items-center justify-center px-4 py-16 md:min-h-dvh md:py-24"
         style={{ backgroundColor: DARK_BG }}
       >
         <div className="relative flex w-[341px] max-w-full items-center justify-center md:w-[460px] md:min-h-[583px]">
           {/* Step 0: Open envelope + form */}
-          <div className="w-full md:origin-center md:scale-[1.35] xl:scale-[2]">
+          <div className="w-full md:origin-center md:scale-[1.35] xl:scale-[1.45]">
             <div
               className="relative h-[432px] w-full"
               style={{
@@ -232,7 +232,7 @@ export default function Home() {
                 }}
               >
                 <p
-                  className="mx-auto mt-[30px] w-[85%] text-center text-[23px] leading-[24px] text-[#231f20]"
+                  className="mx-auto mt-[30px] w-[85%] text-center text-[23px] leading-[1.05] text-[#231f20] md:text-[28px] lg:text-[30px]"
                   style={{ fontFamily: "var(--font-solar)" }}
                 >
                   Užsiregistruok ir būk ten, <br /> kur viskas prasidės.
@@ -343,7 +343,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer
-        className="px-6 pb-[52px] pt-16 sm:px-8 md:pb-10 md:pt-0"
+        className="-mt-px px-6 pb-[52px] pt-16 sm:px-8 md:pb-10 md:pt-0"
         style={{ backgroundColor: DARK_BG }}
       >
         {/* Mobile footer */}
