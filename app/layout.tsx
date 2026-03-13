@@ -59,6 +59,13 @@ export default function RootLayout({
             color: #b82818 !important;
             border-color: #b82818 !important;
           }
+          #silktide-wrapper {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+          }
+          #silktide-wrapper.consent-ready {
+            opacity: 1;
+          }
           #silktide-banner {
             border-radius: 12px !important;
           }

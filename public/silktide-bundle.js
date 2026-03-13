@@ -843,8 +843,7 @@ class SilktideCookieBanner {
   } else {
     initCookieBanner();
   }
-})();setTimeout(function() {
-silktideCookieBannerManager.updateCookieBannerConfig({
+})();silktideCookieBannerManager.updateCookieBannerConfig({
   cookieIcon: {
     position: "bottomRight"
   },
@@ -918,4 +917,8 @@ silktideCookieBannerManager.updateCookieBannerConfig({
     banner: "bottomCenter"
   }
 });
+
+setTimeout(function() {
+  var wrapper = document.getElementById("silktide-wrapper");
+  if (wrapper) wrapper.classList.add("consent-ready");
 }, 1500);
