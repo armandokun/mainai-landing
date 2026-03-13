@@ -12,6 +12,10 @@ export default function Home() {
   const [slideDistance, setSlideDistance] = useState(0);
   const [animate, setAnimate] = useState(false);
   const [envelopeStep, setEnvelopeStep] = useState(0);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [fieldError, setFieldError] = useState<string | null>(null);
 
   useEffect(() => {
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
@@ -31,13 +35,43 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (envelopeStep !== 0) return;
+    if (envelopeStep !== 0 || submitting) return;
 
-    setEnvelopeStep(1);
-    setTimeout(() => setEnvelopeStep(2), 420);
-    setTimeout(() => setEnvelopeStep(3), 900);
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+
+    if (!trimmedName) {
+      setFieldError("name");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!trimmedEmail || !emailRegex.test(trimmedEmail)) {
+      setFieldError("email");
+      return;
+    }
+
+    setFieldError(null);
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: trimmedName, email: trimmedEmail }),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      setEnvelopeStep(1);
+      setTimeout(() => setEnvelopeStep(2), 420);
+      setTimeout(() => setEnvelopeStep(3), 900);
+    } catch {
+      setFieldError("server");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -253,7 +287,9 @@ export default function Home() {
                   name="name"
                   placeholder="Vardas"
                   autoComplete="name"
-                  className="h-[34.23px] w-full rounded-[40.07px] border-[1.67px] border-[#faf5f0] bg-transparent px-[17.53px] text-[13.36px] leading-[17px] text-white placeholder:text-white/95 focus:outline-none"
+                  value={name}
+                  onChange={(e) => { setName(e.target.value); setFieldError(null); }}
+                  className={`h-[34.23px] w-full rounded-[40.07px] border-[1.67px] bg-transparent px-[17.53px] text-[13.36px] leading-[17px] text-white placeholder:text-white/95 focus:outline-none ${fieldError === "name" ? "border-yellow-300" : "border-[#faf5f0]"}`}
                   style={{ fontFamily: "var(--font-solar)" }}
                 />
 
@@ -262,10 +298,20 @@ export default function Home() {
                   name="email"
                   placeholder="El. paštas"
                   autoComplete="email"
-                  className="mt-[10px] h-[34.23px] w-full rounded-[40.07px] border-[1.67px] border-[#faf5f0] bg-transparent px-[17.53px] text-[13.36px] leading-[17px] text-white placeholder:text-white/95 focus:outline-none"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setFieldError(null); }}
+                  className={`mt-[10px] h-[34.23px] w-full rounded-[40.07px] border-[1.67px] bg-transparent px-[17.53px] text-[13.36px] leading-[17px] text-white placeholder:text-white/95 focus:outline-none ${fieldError === "email" ? "border-yellow-300" : "border-[#faf5f0]"}`}
                   style={{ fontFamily: "var(--font-solar)" }}
                 />
 
+                {fieldError === "server" && (
+                  <p
+                    className="mb-[6px] text-center text-[10px] text-yellow-300"
+                    style={{ fontFamily: "var(--font-solar)" }}
+                  >
+                    Klaida. Bandykite dar kartą.
+                  </p>
+                )}
                 <div className="mt-[10px] flex w-full items-center gap-3">
                   <p
                     className="w-[60%] text-[7px] font-medium tracking-[0.05em] leading-[124%] text-white/90 md:w-[80%] md:text-[9px] lg:text-[9px]"
@@ -283,7 +329,8 @@ export default function Home() {
                   </p>
                   <button
                     type="submit"
-                    className="ml-auto shrink-0 flex h-[34px] w-[63px] cursor-pointer items-center justify-center rounded-[40.07px] border-[1.67px] border-[#faf5f0] bg-transparent text-[13.36px] leading-[17px] text-white transition-colors duration-200 hover:bg-[#faf5f0] hover:text-[#dc321e]"
+                    disabled={submitting}
+                    className="ml-auto shrink-0 flex h-[34px] w-[63px] cursor-pointer items-center justify-center rounded-[40.07px] border-[1.67px] border-[#faf5f0] bg-transparent text-[13.36px] leading-[17px] text-white transition-colors duration-200 hover:bg-[#faf5f0] hover:text-[#dc321e] disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ fontFamily: "var(--font-solar)" }}
                   >
                     Siųsti
