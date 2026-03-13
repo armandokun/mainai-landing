@@ -112,6 +112,22 @@ export default function RootLayout({
             color: #b82818 !important;
             border-color: #b82818 !important;
           }
+          #silktide-cookie-icon {
+            width: 32px !important;
+            height: 32px !important;
+            bottom: 16px !important;
+            right: 16px !important;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+            box-shadow: none !important;
+          }
+          #silktide-cookie-icon:hover {
+            opacity: 1;
+          }
+          #silktide-cookie-icon svg {
+            width: 18px !important;
+            height: 18px !important;
+          }
         `}</style>
       </head>
       <body

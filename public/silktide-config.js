@@ -76,4 +76,5 @@ silktideCookieBannerManager.updateCookieBannerConfig({
 setTimeout(function() {
   var wrapper = document.getElementById("silktide-wrapper");
   if (wrapper) wrapper.classList.add("consent-ready");
+
 }, 1500);
