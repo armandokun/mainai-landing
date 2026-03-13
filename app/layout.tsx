@@ -13,10 +13,35 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const BASE_URL = "https://mainai.social";
+
 export const metadata: Metadata = {
   title: "Mainai",
-  description: "Mainai - Your AI-powered platform",
+  description: "Kur svetimi tampa pažįstamais, o paprasti dalykai sujungia.",
   manifest: "/site.webmanifest",
+  metadataBase: new URL(BASE_URL),
+  openGraph: {
+    title: "Mainai",
+    description: "Kur svetimi tampa pažįstamais, o paprasti dalykai sujungia.",
+    url: BASE_URL,
+    siteName: "Mainai",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1080,
+        height: 566,
+        alt: "Mainai",
+      },
+    ],
+    locale: "lt_LT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mainai",
+    description: "Kur svetimi tampa pažįstamais, o paprasti dalykai sujungia.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
