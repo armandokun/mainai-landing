@@ -18,6 +18,13 @@ export default function Home() {
   const [fieldError, setFieldError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Lock the initial viewport height so browser nav bar show/hide doesn't
+    // cause layout shifts or image resize on mobile.
+    document.documentElement.style.setProperty(
+      "--hero-height",
+      `${window.innerHeight}px`
+    );
+
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
     if (!isDesktop) {
@@ -77,7 +84,7 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: CREAM_WHITE }}>
       <section
-        className="relative h-dvh overflow-hidden"
+        className="relative h-[var(--hero-height,100svh)] overflow-hidden md:h-dvh"
         style={{ backgroundColor: CREAM_WHITE }}
       >
         {/* === DESKTOP HERO (lg+) === */}
@@ -151,7 +158,7 @@ export default function Home() {
           <div
             className="flex flex-col"
             style={{
-              height: `200vh`,
+              height: `calc(var(--hero-height, 100svh) * 2)`,
               willChange: "transform",
               transition: "transform 1s cubic-bezier(0.62, 0.01, 0.03, 1)",
               transform: animate
@@ -160,7 +167,7 @@ export default function Home() {
             }}
           >
             {/* Subtext - starts at bottom of first viewport */}
-            <div className="flex h-dvh shrink-0 flex-col justify-end px-8">
+            <div className="flex h-[var(--hero-height,100svh)] shrink-0 flex-col justify-end px-8">
               <p
                 ref={subtextRef}
                 className="pb-6 text-center text-[24px] leading-tight text-black/90"
@@ -175,7 +182,7 @@ export default function Home() {
             </div>
 
             {/* Image - scaled by height and cropped horizontally */}
-            <div className="hero-image relative h-dvh w-full shrink-0 overflow-hidden">
+            <div className="hero-image relative h-[var(--hero-height,100svh)] w-full shrink-0 overflow-hidden">
               <div className="absolute left-1/2 top-1/2 h-full -translate-x-1/2 -translate-y-1/2">
                 <img
                   src="/hero-image.jpg"
